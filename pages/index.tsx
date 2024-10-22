@@ -2,19 +2,17 @@ import Image from "next/image";
 import localFont from "next/font/local";
 import { useEffect, useState } from "react";
 import { fetchApi, queries } from "@/utils/Fetching";
+import Navbar from "@/components/Navbar/Navbar";
+import Header from "@/components/Header/IndexHeader";
+import Socials from "@/components/Socials/IndexSocials";
+import Ticketing from "@/components/Ticketing/IndexTicketing";
+import Solutions from "@/components/Solutions/IndexSolutions";
+import Testimonies from "@/components/Testimonies/IndexTestim";
+import Footer from "@/components/Footer/IndexFooter";
+import Informations from "@/components/Informations/IndexInfo";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
 
-interface Post {
+/* interface Post {
   title: string
   _id: string
   subTitle:string
@@ -61,10 +59,15 @@ interface Results {
   total: number;
   results: Post[];
 }
+interface Props {
+  componentState: any;
+  setComponentState: any;
+}
+ */
 
 export default function Home() {
 
-  const [data,setData] = useState<Post[]>();
+/*   const [data,setData] = useState<Post[]>();
   useEffect(() => {
     fetchApi({
       query: queries.getAllPost,
@@ -78,15 +81,35 @@ export default function Home() {
 
   useEffect(() => {
     console.log(data)
-  }, [data])
+  }, [data]) */
   
 
   return (
-    <div
-      className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
 
+    <div className="w-full flex flex-col bg-white text-black items-center justify-items-center min-h-screen px-8 pt-8 gap-4">
+      <Navbar/>
+      
+      <div className="self-stretch flex items-center justify-center">
+      <Header/>
+      </div>
+      <div className="self-stretch flex items-center justify-center">
+      <Informations/>
+      </div>
+      <div className="self-stretch flex items-center justify-center">
+      <Socials/>
+      </div>
+      <div className="self-stretch flex items-center justify-center">
+      <Ticketing/>
+      </div>
+      <div className="self-stretch flex items-center justify-center">
+      <Testimonies/>
+      </div>
+      <div className="self-stretch flex items-center justify-center">
+      <Solutions/>
+      </div>
+      
+      
+{/*       <div className="flex flex-col gap-8 items-center">
           {data?.map((elem, idx) => {
             return(
               <div key={idx} >
@@ -95,8 +118,8 @@ export default function Home() {
             )
           })
         }
-      </main>
-
+      </div> */}
+<Footer/>
     </div>
   );
 }
