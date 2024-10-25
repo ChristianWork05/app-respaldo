@@ -1,5 +1,6 @@
 import { fetchApi, queries } from "@/utils/Fetching";
 import { FC, useEffect, useState } from "react";
+import { Markup } from "interweave";
 
 
 
@@ -50,10 +51,6 @@ interface Results {
   total: number;
   results: Post[];
 }
-interface Props {
-  componentState: any;
-  setComponentState: any;
-}
 
 
 export default function BlogComponent() {
@@ -66,6 +63,11 @@ export default function BlogComponent() {
     }).then((results:Results) =>{
       setData(results.results)
       console.log(results)
+      
+        // Automatically select the first post
+        if (results.results.length > 0) {
+          setSelectedPost(results.results[0]);
+        }
     })
     
   }, [])
@@ -101,7 +103,8 @@ export default function BlogComponent() {
             
             <div className="self-stretch flex items-start justify-start text-sm font-semibold">{selectedPost.subTitle}</div>
 
-            <div className="self-stretch flex items-center justify-center text-sm">{selectedPost.content}</div>
+            <div className="self-stretch flex items-center justify-center text-sm">
+            <Markup content={selectedPost.content}/></div>
             {/* ... other content */}
           </div>
         )}

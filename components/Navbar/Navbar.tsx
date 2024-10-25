@@ -17,7 +17,7 @@ export const menuItems = [
     description: 'Conferencias, Festivales, Restaurantes, etc.' 
   },
 
-  { title: 'Otros Productos', 
+  { title: 'Ayuda', 
     slug:"/help",
     component:<Ayuda/>,
     description: 'Eventos Online, Ebook, Suscripciones.' 
